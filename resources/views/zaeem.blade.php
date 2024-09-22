@@ -16,9 +16,15 @@
 </head>
 
 <body>
+
+    @php
+        dump($cities_data);
+        dump($countries);
+    @endphp
+
     <h1 class='areeb'>Plain PHP Syntax</h1>
     <?php
-    $students = ['ahmed', 'areeb', 'zaeem', 'abdullah'];
+    $students = ['zain', 'areeb', 'zaeem', 'abdullah'];
     echo '<ul>';
     foreach ($students as $student) {
         echo "<li> $student</li>";
