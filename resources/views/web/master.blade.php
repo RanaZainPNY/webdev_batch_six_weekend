@@ -69,10 +69,12 @@
                 </button>
                 <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="shop.html" class="nav-item nav-link">Shop</a>
-                        <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
-                        <div class="nav-item dropdown">
+                        <a href="{{ route('web-index') }}" class="nav-item nav-link active">Home</a>
+                        <a href="{{ route('web-shop') }}" class="nav-item nav-link">Shop</a>
+                        <a href="{{ route('web-cart') }}" class="nav-item nav-link">Cart</a>
+                        <a href="{{ route('web-checkout') }}" class="nav-item nav-link">Checkout</a>
+                        {{-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> --}}
+                        {{-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                 <a href="cart.html" class="dropdown-item">Cart</a>
@@ -80,7 +82,7 @@
                                 <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
-                        </div>
+                        </div> --}}
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="d-flex m-3 me-0">
@@ -204,7 +206,7 @@
                         <p>Email: Example@gmail.com</p>
                         <p>Phone: +0123 4567 8910</p>
                         <p>Payment Accepted</p>
-                        <img src="{{asset('fruitables/img/payment.png')}}" class="img-fluid" alt="">
+                        <img src="{{ asset('fruitables/img/payment.png') }}" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>

@@ -15,6 +15,7 @@
                                 <thead>
                                     <tr class="border-2 border-bottom border-primary border-0">
                                         <th scope="col" class="ps-0">Id</th>
+                                        <th scope="col" class="ps-0">Name</th>
                                         <th scope="col" class="text-center">Image</th>
                                         <th scope="col" class="text-center">SKU</th>
                                         <th scope="col" class="text-center">Price</th>
@@ -27,7 +28,10 @@
                                             <th scope="row" class="ps-0 fw-medium">
                                                 <span class="table-link1 text-truncate d-block">{{ $product->id }}</span>
                                             </th>
-                                            <td>{{ $product->image }}
+                                            <td>{{ $product->name }}</td>
+                                            <td>
+                                                <img style='width: 100px;'
+                                                    src="{{ asset('uploads/products/' . $product->image) }}" alt="">
                                             </td>
                                             <td class="text-center fw-medium">{{ $product->sku }}</td>
                                             <td class="text-center fw-medium">{{ $product->price }}</td>

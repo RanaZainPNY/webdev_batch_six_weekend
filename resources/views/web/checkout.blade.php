@@ -88,20 +88,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="d-flex align-items-center mt-2">
-                                                <img src="{{ asset('fruitables/img/vegetable-item-2.jpg') }}"
-                                                    class="img-fluid rounded-circle" style="width: 90px; height: 90px;"
-                                                    alt="">
-                                            </div>
-                                        </th>
-                                        <td class="py-5">Awesome Brocoli</td>
-                                        <td class="py-5">$69.00</td>
-                                        <td class="py-5">2</td>
-                                        <td class="py-5">$138.00</td>
-                                    </tr>
-                                    <tr>
+                                    @foreach ($cart as $id => $details)
+                                        <tr>
+                                            <th scope="row">
+                                                <div class="d-flex align-items-center mt-2">
+                                                    <img src="{{ asset('uploads/products/' . $details['image']) }}"
+                                                        class="img-fluid rounded-circle" style="width: 90px; height: 90px;"
+                                                        alt="">
+                                                </div>
+                                            </th>
+                                            {{-- <td class="py-5">Awesome Brocoli</td> --}}
+                                            <td class="py-5">{{ $details['name'] }}</td>
+                                            {{-- <td class="py-5">$69.00</td> --}}
+                                            <td class="py-5">{{ $details['price'] }}</td>
+                                            <td class="py-5">{{ $details['quantity'] }}</td>
+                                            <td class="py-5">{{ $details['quantity'] * $details['price'] }}</td>
+                                            {{-- <td class="py-5">$138.00</td> --}}
+                                        </tr>
+                                    @endforeach
+
+
+                                    {{-- <tr>
                                         <th scope="row">
                                             <div class="d-flex align-items-center mt-2">
                                                 <img src="img/vegetable-item-5.jpg" class="img-fluid rounded-circle"
@@ -113,6 +120,7 @@
                                         <td class="py-5">2</td>
                                         <td class="py-5">$138.00</td>
                                     </tr>
+
                                     <tr>
                                         <th scope="row">
                                             <div class="d-flex align-items-center mt-2">
@@ -125,6 +133,7 @@
                                         <td class="py-5">2</td>
                                         <td class="py-5">$138.00</td>
                                     </tr>
+
                                     <tr>
                                         <th scope="row">
                                         </th>
@@ -139,6 +148,7 @@
                                             </div>
                                         </td>
                                     </tr>
+
                                     <tr>
                                         <th scope="row">
                                         </th>
@@ -164,6 +174,7 @@
                                             </div>
                                         </td>
                                     </tr>
+
                                     <tr>
                                         <th scope="row">
                                         </th>
@@ -177,7 +188,7 @@
                                                 <p class="mb-0 text-dark">$135.00</p>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
