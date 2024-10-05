@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Order;
 
 class WebsiteController extends Controller
 {
@@ -121,6 +122,39 @@ class WebsiteController extends Controller
         return view('admin.index', [
             'products' => $products
         ]);
+
+    }
+
+    public function placeorder(Request $request)
+    {
+        // return 'place order called';
+        // dump($request);
+
+        $cart = session()->get('cart');
+        dump($cart);
+
+        $total = 0;
+        foreach ($cart as $id => $details) {
+            $total += $details['quantity'] * $details['price'];
+        }
+
+        $order = new Order();
+        $order->firstname = $request->firstname;
+        $order->lastname = $request->firstname;
+        $order->address = $request->address;
+        $order->contact = $request->contact;
+        $order->email = $request->email;
+        $order->notes = $request->notes;
+        $order->total = $total;
+        $order->save();
+
+       // Clear cart after placing order
+       session()->forget('cart');
+
+       return redirect()->back()->with('success', 'order placed successfully');
+
+
+
 
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
@@ -89,7 +90,21 @@ class ProductController extends Controller
         }
 
         return redirect()->route(route: 'admin-index');
-
-
     }
+
+    public function showorders()
+    {
+        $orders = Order::all();
+
+        return view('admin.orders', ['orders' => $orders]);
+
+    }   
+    public function removeorder($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->delete();
+        return redirect()->back();
+    }
+
+
 }

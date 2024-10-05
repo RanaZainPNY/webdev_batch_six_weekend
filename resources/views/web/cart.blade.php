@@ -29,50 +29,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($cart as $id => $details)
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ asset('uploads/products/' . $details['image']) }}"
-                                            class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;"
-                                            alt="">
-                                    </div>
-                                </th>
-                                <td>
-                                    <p class="mb-0 mt-4">{{ $details['name'] }}</p>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">{{ $details['price'] }}</p>
-                                </td>
-                                <td>
-                                    <div class="input-group quantity mt-4" style="width: 100px;">
-                                        {{-- <div class="input-group-btn">
+                        @if ($cart != null)
+                            @foreach ($cart as $id => $details)
+                                <tr>
+                                    <th scope="row">
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ asset('uploads/products/' . $details['image']) }}"
+                                                class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;"
+                                                alt="">
+                                        </div>
+                                    </th>
+                                    <td>
+                                        <p class="mb-0 mt-4">{{ $details['name'] }}</p>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0 mt-4">{{ $details['price'] }}</p>
+                                    </td>
+                                    <td>
+                                        <div class="input-group quantity mt-4" style="width: 100px;">
+                                            {{-- <div class="input-group-btn">
                                             <button class="btn btn-sm btn-minus rounded-circle bg-light border">
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div> --}}
-                                        <input type="text" class="form-control form-control-sm text-center border-0"
-                                            value="{{ $details['quantity'] }}" disabled>
-                                        {{-- <div class="input-group-btn">
+                                            <input type="text" class="form-control form-control-sm text-center border-0"
+                                                value="{{ $details['quantity'] }}" disabled>
+                                            {{-- <div class="input-group-btn">
                                             <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div> --}}
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="mb-0 mt-4">{{ $details['price'] * $details['quantity'] }}</p>
-                                </td>
-                                <td>
-                                    <a href="{{ route('web-remove-from-cart', $id) }}"
-                                        class="btn btn-md rounded-circle bg-light border mt-4">
-                                        <i class="fa fa-times text-danger"></i>
-                                    </a>
-                                </td>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="mb-0 mt-4">{{ $details['price'] * $details['quantity'] }}</p>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('web-remove-from-cart', $id) }}"
+                                            class="btn btn-md rounded-circle bg-light border mt-4">
+                                            <i class="fa fa-times text-danger"></i>
+                                        </a>
+                                    </td>
 
-                            </tr>
-                        @endforeach
-
+                                </tr>
+                            @endforeach
+                        @endif
                         {{-- <tr>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
@@ -179,15 +180,18 @@
                             @php
 
                                 $total = 0;
-                                foreach ($cart as $id => $details) {
-                                    $total += $details['price'] * $details['quantity'];
+                                if ($cart != null) {
+                                    foreach ($cart as $id => $details) {
+                                        $total += $details['price'] * $details['quantity'];
+                                    }
                                 }
                             @endphp
 
                             <h5 class="mb-0 ps-4 me-4">Total</h5>
                             <p class="mb-0 pe-4">{{ $total }}</p>
                         </div>
-                        <a href="{{route('web-checkout')}}" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+                        <a href="{{ route('web-checkout') }}"
+                            class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
                             type="button">Proceed Checkout</a>
                     </div>
                 </div>

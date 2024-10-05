@@ -33,7 +33,7 @@ Route::get('/web/cart', [WebsiteController::class, 'cart'])->name('web-cart');
 Route::get('/web/add-to-cart/{id}', [WebsiteController::class, 'addToCart'])->name('web-add-to-cart');
 Route::get('/web/cartdata', [WebsiteController::class, 'showCartData'])->name('web-cart-data');
 Route::get('/web/remove-from-cart/{id}', [WebsiteController::class, 'remove'])->name('web-remove-from-cart');
-
+Route::post('/placeorder', [WebsiteController::class, 'placeorder'])->name('web-place-order');
 
 
 // Admin Panel Routes
@@ -48,6 +48,9 @@ Route::get("/admin/products/destroy/{id}", [ProductController::class, 'destroy']
 Route::get("/admin/products/editform/{id}", [ProductController::class, 'editForm'])->name("admin-products-edit-form");
 Route::post("/admin/products/edit/update/{id}", [ProductController::class, 'update'])->name("admin-products-update");
 
+// for orders
+Route::get("/admin/orders", [ProductController::class, 'showorders'])->name("admin-orders");
+Route::get("/admin/orders/remove/{id}", [ProductController::class, 'removeorder'])->name("admin-remove-order");
 
 
 
